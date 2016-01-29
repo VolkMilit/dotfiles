@@ -1,0 +1,11 @@
+#!/bin/sh
+
+h="hw:1"
+
+killall dunst
+amixer -D $h set PCM $1
+
+x=`amixer -D $h | sed -rn '/[^[]+\[/{s///;s/%.+//p;q}'`
+notify-send -i audio-volume-high-symbolic  -h int:value:$x  "" -t 5
+
+exit 0

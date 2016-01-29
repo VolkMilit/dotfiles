@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+#
+# Pause YouTube
+#	(c) 2016 Volk_Milit <javirdarr@openmailbox.org>
+#
+
+if [ ! -z `xdotool search --name YouTube` ]; then
+	LASTWINDOW=`xdotool getactivewindow `
+	x=`xdotool getmouselocation | cut -c 3-6 | sed 's/[a-z]\://g'`
+	y=`xdotool getmouselocation | cut -c 6-11 | sed 's/[a-z]\://g'`
+
+	xdotool mousemove 400 329
+	xdotool click --window `xdotool search --name YouTube` 1
+	xdotool windowactivate $LASTWINDOW
+	xdotool mousemove $x $y
+else
+	deadbeef --play-pause
+fi
+
+notify-send Player pause
+
+exit 0

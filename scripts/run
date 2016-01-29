@@ -1,0 +1,28 @@
+#!/bin/sh
+# end a command with ; to run in a terminal
+
+cd $HOME/scripts/dmenu/
+
+SB="#d64937"
+SF="#ffffff"
+NB="#2d2d2d"
+NF="#ffffff"
+FN="-*-fixed-medium-r-dejavu-*-16-*-*-*-*-*-iso10646-*"
+OPTIONS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -x 250 -y 512 -w 800 -p запустить: -i"
+
+DMENU="./dmenu -i $OPTIONS"
+TERMI="st -e"
+CACHE="$HOME/.cache/dmenu_cache_recent"
+
+touch $CACHE
+MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
+RUN=`(echo "$MOST_USED"; ./dmenu_path | grep -vxF "$MOST_USED") | $DMENU $@` &&
+(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
+mv $CACHE.$$ $CACHE
+
+case $RUN in
+    *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;
+    *)   exec $RUN;;
+esac
+
+exit 0

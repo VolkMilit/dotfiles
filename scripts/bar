@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /home/volk/.local/bin/lbar
+./panel.sh &
+./trayer.sh &

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+FOLDER="$HOME/Изображения/screenshots/"
+exe="scrot"
+
+if [ "$1" = "-s" ]; then
+	$exe $FOLDER$(date +%F-%T).png -s
+elif [ "$1"=* ]; then
+	$exe $1
+else
+	$exe $FOLDER$(date +%F-%T).png
+fi
+
+notify-send Scrot "Screenshot saved"
+
+exit 0

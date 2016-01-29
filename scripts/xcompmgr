@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ !  `pgrep compton` ]; then
+  compton --config $HOME/.config/compton/compton.conf --dbe &&
+  exit 0
+else
+  killall compton &&
+  exit 0
+fi
