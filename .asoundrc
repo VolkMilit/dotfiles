@@ -1,0 +1,65 @@
+### Alles in einer Zeile nach dem Zeichen # ist ein Kommentar, und wird von ALSA ignoriert.
+
+# Das dmix-Plugin wird definiert.
+pcm.usbheadset {
+    type dmix
+    ipc_key 1024
+    ipc_perm 0666       # Andere Benutzer können ebenfalls dmix gleichzeitig nutzen
+    slave {
+		pcm "hw:1,0"
+        ### buffer_size kann bei Problemen der jeweiligen Karte angepasst werden.
+        period_time 0
+        period_size 0
+        buffer_size 4096
+        ### bei Störungen kann die Konvertierung auf die Rate 44100 eingeschaltet werden.
+        rate 44100
+        ### einige Soundkarten benötigen das exakte Datenformat (zB ice1712)
+        # format S32_LE
+        ### Verfügbare Formate: S8 U8 S16_LE S16_BE U16_LE U16_BE S24_LE S24_BE U24_LE U24_BE
+        ###               S32_LE S32_BE U32_LE U32_BE FLOAT_LE FLOAT_BE FLOAT64_LE FLOAT64_BE
+        ###               IEC958_SUBFRAME_LE IEC958_SUBFRAME_BE MU_LAW A_LAW IMA_ADPCM MPEG GSM
+        ### Anzahl channels muss mit den bindings übereinstimmen
+        channels 2 
+    }
+    bindings {
+        0 0
+        1 1
+    }
+}
+
+# Das dsnoop-Plugin, welches es erlaubt, mehrere Programme gleichzeitig aufnehmen zu lassen.
+pcm.dsnooper {
+    type dsnoop
+    ipc_key 2048
+    ipc_perm 0777 
+    slave 
+    {
+		pcm "hw:1,0"
+        period_time 0
+        period_size 0
+        buffer_size 4096
+        # bei Störungen kann die Konvertierung auf die Rate 44100 eingeschaltet werden.
+        # rate 44100
+        # einige Soundkarten benötigen das exakte Datenformat (zB ice1712)
+        # format S32_LE
+        ### Anzahl channels muss mit den bindings übereinstimmen
+        #channels 1
+    }
+}
+
+# Dies definiert unser Fullduplex-Plugin als Standard für alle ALSA-Programme.
+pcm.usbheadsetduplex {
+    type asym
+    playback.pcm "usbheadset"
+    capture.pcm "dsnooper"
+}
+
+pcm.!default {
+    type plug
+    slave.pcm "usbheadsetduplex"
+}
+
+pcm.headset {
+	type dsnoop
+	slave.pcm "usbheadset"
+}
