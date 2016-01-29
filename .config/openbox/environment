@@ -1,0 +1,20 @@
+#steam
+export STEAM_FRAME_FORCE_CLOSE=1
+export force_s3tc_enable=true
+
+#app's
+export GIMP2_DIRECTORY="$HOME/.local/share/gimp-2.8"
+export GNUPGHOME="$HOME/.config/gnupg"
+export MPLAYER_HOME="$HOME/.config/mplayer"
+
+# NVIDIA
+export __GL_SHADER_DISK_CACHE_PATH="$HOME/.cache/nv"
+
+#.pki
+export HTTPIE_CONFIG_DIR="$HOME/.config/pki"
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/volk/.local/bin:/home/volk/.local/games:/home/volk/.local/runtime/"
+export LANG="ru_RU.UTF8"
+export __GL_YIELD="USLEEP"
+
+export FONTCONFIG_PATH="$HOME/.cache/fontconfig"

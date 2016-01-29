@@ -1,0 +1,9 @@
+nvidia-settings --load-config-only --config $HOME/.config/nvidia-settings-rc &
+# nitrogen --restore &
+bar &
+# xfce4-panel &
+clipit &
+# plank &
+xcompmgr &
+xautolock -detectsleep -time 8 -locker lock &
+# randomwallpaper &

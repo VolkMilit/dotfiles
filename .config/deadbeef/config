@@ -1,0 +1,249 @@
+adplug.surround 1
+adplug.use_ken 0
+alsa_soundcard default
+artwork.cache.period 48
+artwork.cache_reset_time 1418810400
+artwork.enable_albumartorg 1
+artwork.enable_embedded 1
+artwork.enable_lastfm 1
+artwork.enable_localfolder 1
+artwork.enable_wos 1
+artwork.filemask *.jpg;*.gif;*.png;
+artwork.scale_towards_longer 1
+cdda.enable_nrg 0
+cdda.freedb.enable 1
+cdda.freedb.host freedb.org
+cdda.freedb.port 888
+cdda.prefer_cdtext 1
+cdda.protocol 1
+cli_add_playlist_name Default
+cli_add_to_specific_playlist 1
+close_send_to_tray 1
+converter.dsp_preset -1
+converter.encoder_preset 0
+converter.output_folder /home/volk
+converter.output_format 0
+converter.overwrite_action 0
+deadbeef_version 0.6.2
+filebrowser.autofilter 1
+filebrowser.bgcolor 
+filebrowser.bgcolor_selected 
+filebrowser.bookmarks_file $HOME/.config/gtk-3.0/bookmarks
+filebrowser.coverart_files cover.jpg;folder.jpg;front.jpg
+filebrowser.coverart_size 24
+filebrowser.defaultpath /media/drive1/Music
+filebrowser.enabled 1
+filebrowser.expanded_rows 
+filebrowser.fgcolor 
+filebrowser.fgcolor_selected 
+filebrowser.filter 
+filebrowser.filter_enabled 1
+filebrowser.font_size 0
+filebrowser.hidden 0
+filebrowser.icon_size 24
+filebrowser.save_treeview 1
+filebrowser.showbookmarks 0
+filebrowser.showhidden 0
+filebrowser.showicons 1
+filebrowser.sidebar_width 150
+filebrowser.sort_treeview 1
+filebrowser.treelines 0
+filechooser.lastdir file:///media/drive1/Music/Brony%20Music/Pinkie%20Guy/Pinkie%20Guy%20-%20Ggygxg
+filechooser.playlist.lastdir file:///media/drive1/Music/1Playlists
+gme.fadeout 10
+gme.loopcount 2
+gme.songlength 3
+gtkui.action_separators 0
+gtkui.conf_dsp_preset default
+gtkui.custom_tray_icon deadbeef_tray_icon
+gtkui.delete_files_ask 1
+gtkui.disable_seekbar_overlay 0
+gtkui.embolden_current_track 1
+gtkui.eq.visible 0
+gtkui.last_playlist_save_name /media/drive1/Music/1Playlists/Radio.dbpl
+gtkui.layout.0.6.2 vbox expand="0 1" fill="1 1" homogeneous=0 {hbox expand="0 1 0" fill="1 1 1" homogeneous=0 {playtb {} waveform_seekbar {} volumebar {} } hsplitter pos=208 locked=0 {infobar {} tabbed_playlist hideheaders=0 {} } } 
+gtkui.mmb_delete_playlist 1
+gtkui.name_playlist_from_folder 1
+gtkui.statusbar.visible 1
+gtkui.sync 0
+gtkui.tabscroll 0
+gtkui.titlebar_playing %a - %t - DeaDBeeF-%V
+gtkui.titlebar_stopped DeaDBeeF-%V
+gtkui.tray_volume_sensitivity 1
+gtkui.unicode_playstate 0
+gui_plugin GTK2
+hotkey.key01 "Ctrl f" 0 0 find
+hotkey.key02 "Ctrl o" 0 0 open_files
+hotkey.key03 "Ctrl q" 0 0 quit
+hotkey.key04 "Ctrl n" 0 0 new_playlist
+hotkey.key05 "Ctrl a" 0 0 select_all
+hotkey.key06 "Escape" 0 0 deselect_all
+hotkey.key07 "Ctrl m" 0 0 toggle_stop_after_current
+hotkey.key08 "Ctrl j" 0 0 jump_to_current_track
+hotkey.key09 "F1" 0 0 help
+hotkey.key10 "Delete" 1 0 remove_from_playlist
+hotkey.key11 "Ctrl w" 0 0 remove_current_playlist
+hotkey.key14 "Return" 0 0 play
+hotkey.key15 "Ctrl p" 0 0 toggle_pause
+hotkey.key16 "Alt 1" 0 0 playlist1
+hotkey.key17 "Alt 2" 0 0 playlist2
+hotkey.key18 "Alt 3" 0 0 playlist3
+hotkey.key19 "Alt 4" 0 0 playlist4
+hotkey.key20 "Alt 5" 0 0 playlist5
+hotkey.key21 "Alt 6" 0 0 playlist6
+hotkey.key22 "Alt 7" 0 0 playlist7
+hotkey.key23 "Alt 8" 0 0 playlist8
+hotkey.key24 "Alt 9" 0 0 playlist9
+hotkey.key25 "Alt 0" 0 0 playlist10
+hotkey.key26 z 0 0 prev
+hotkey.key27 x 0 0 play
+hotkey.key28 c 0 0 toggle_pause
+hotkey.key29 v 0 0 stop
+hotkey.key30 b 0 0 next
+hotkey.key31 n 0 0 playback_random
+hotkey.key32 "Ctrl k" 0 0 toggle_stop_after_album
+hotkeys_created 1
+ignore_archives 1
+infobar.bio.cache.period 24.000000
+infobar.bio.enabled 1
+infobar.bio.locale ru
+infobar.lyrics.alignment 0
+infobar.lyrics.cache.period 0.000000
+infobar.lyrics.enabled 1
+infobar.lyrics.lyricsmania 1
+infobar.lyrics.lyricstime 1
+infobar.lyrics.lyricswikia 1
+infobar.lyrics.megalyrics 1
+infobar.lyrics.script 0
+infobar.lyrics.script.path 
+infobar.similar.enabled 1
+infobar.similar.max.artists 99.000000
+junk.enable_cp1251_detection 1
+junk.enable_cp936_detection 1
+junk.enable_shift_jis_detection 1
+lastfm.disable_np 1
+lastfm.enable 1
+lastfm.login 
+lastfm.mbid 0
+lastfm.password 
+lastfm.prefer_album_artist 0
+lastfm.scrobbler_url http://post.audioscrobbler.com
+lastfm.submit_tiny_tracks 0
+mainwin.geometry.h 630
+mainwin.geometry.maximized 0
+mainwin.geometry.w 993
+mainwin.geometry.x 142
+mainwin.geometry.y 204
+network.http_user_agent deadbeef
+network.proxy.port 8080
+network.proxy.type HTTP
+notify.albumart 1
+notify.albumart_size 64
+notify.enable 1
+notify.format %t
+notify.format_content %a - %b
+output_plugin ALSA output plugin
+playback.loop 0
+playback.order 0
+playback.volume -9.000000
+playlist.column.00 "Обложка альбома" "" 8 100 0
+playlist.column.01 "Название" "%t" -1 256 0
+playlist.column.02 "Исполнитель / Альбом" "%a - %b" -1 361 0
+playlist.column.03 "Продолжительность" "%l" -1 47 0
+playlist.current 1
+playlist.cursor.0 0
+playlist.cursor.1 0
+playlist.cursor.10 8
+playlist.cursor.11 8
+playlist.cursor.12 8
+playlist.cursor.13 8
+playlist.cursor.14 4
+playlist.cursor.2 0
+playlist.cursor.3 0
+playlist.cursor.4 8
+playlist.cursor.5 8
+playlist.cursor.6 8
+playlist.cursor.7 8
+playlist.cursor.8 8
+playlist.cursor.9 8
+playlist.group_by %a - [%y] %b
+playlist.scroll.0 0
+playlist.scroll.1 0
+playlist.scroll.10 0
+playlist.scroll.11 0
+playlist.scroll.12 0
+playlist.scroll.13 0
+playlist.scroll.14 0
+playlist.scroll.2 0
+playlist.scroll.3 0
+playlist.scroll.4 0
+playlist.scroll.5 0
+playlist.scroll.6 0
+playlist.scroll.7 0
+playlist.scroll.8 0
+playlist.scroll.9 0
+playlist.scroll.cursorfollowplayback 1
+playlist.stop_after_album_reset 0
+playlist.tab.00000 Плейлист
+playlist.tab.00001 Pinkie Guy - Ggygxg
+prefwin.geometry.h 438
+prefwin.geometry.w 879
+prefwin.geometry.x 122
+prefwin.geometry.y 127
+replaygain_mode 1
+replaygain_preamp 0.0000000
+replaygain_scale 1
+resume.paused 0
+resume.playlist 0
+resume.position 5.0715094
+resume.track 0
+resume_last_session 1
+search.column.00 "Исполнитель / Альбом" "%a - %b" -1 150 0
+search.column.01 "№" "%n" -1 50 1
+search.column.02 "Название" "%t" -1 150 0
+search.column.03 "Продолжительность" "%l" -1 50 0
+searchwin.geometry.h 150
+searchwin.geometry.w 450
+searchwin.geometry.x 828
+searchwin.geometry.y 765
+shn.relative_seektable_path seektables
+shn.seektable_path 
+shn.swap_bytes 0
+streamer.16_to_24 0
+streamer.8_to_16 1
+trkproperties.geometry.h 449
+trkproperties.geometry.w 612
+trkproperties.geometry.x 330
+trkproperties.geometry.y 457
+vk.auth.data { 'access_token': '88e12a8acbd20c78b38561903c22a9210de1d640d6bfda1f699fe1ccbc8eecfc5d15237238a246281c7b9', 'expires_in': 0, 'user_id': 173650183 }
+vk.auth.url http://oauth.vkontakte.ru/authorize?client_id=3035566&scope=audio,friends,offline&redirect_uri=http://scorpp.github.io/db-vk/vk-id.html&response_type=token
+waveform.bg_alpha 65535
+waveform.bg_color_b 50115
+waveform.bg_color_g 50115
+waveform.bg_color_r 50115
+waveform.border_width 1
+waveform.cache_enabled 1
+waveform.cursor_width 3
+waveform.display_rms 0
+waveform.fg_alpha 65535
+waveform.fg_color_b 20000
+waveform.fg_color_g 20000
+waveform.fg_color_r 20000
+waveform.fg_rms_alpha 65535
+waveform.fg_rms_color_b 5000
+waveform.fg_rms_color_g 5000
+waveform.fg_rms_color_r 5000
+waveform.font_size 10
+waveform.log_enabled 0
+waveform.max_file_length 180
+waveform.mix_to_mono 1
+waveform.num_samples 2048
+waveform.pb_alpha 20000
+waveform.pb_color_b 59881
+waveform.pb_color_g 44718
+waveform.pb_color_r 15677
+waveform.refresh_interval 33
+waveform.render_method 2
+waveform.scroll_enabled 1
+waveform.shade_waveform 1
+waveform.soundcloud_style 1

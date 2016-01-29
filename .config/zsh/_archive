@@ -1,0 +1,4 @@
+#compdef pk
+local context state state_descr line
+typeset -A opt_args
+local filterexcl="(tar rar 7z)"
