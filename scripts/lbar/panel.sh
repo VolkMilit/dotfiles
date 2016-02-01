@@ -9,8 +9,6 @@ ICON_FONT="FontAwesome-11"
 FONT_COLOR='#fff'
 PANEL_BACKGROUND='#2d2d2d'
 
-SLEEP=0.5 #sleep of mainloop
-
 if [ $(pgrep -cx panel) -gt 1 ] ; then
         printf "%s\n" "The panel is already running." >&2
         exit 1
@@ -21,7 +19,6 @@ fi
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-#main loop
 while true
 do
 		d=`xprop -root _NET_CURRENT_DESKTOP | rev | cut -c1`
@@ -41,10 +38,20 @@ do
 		echo N$(xdotool getwindowname `xdotool getactivewindow`)
 		
 		echo V$(echo -e '\uf028') $(awk -F"[][]" '/dB/ { print $2 }' <(amixer -D hw:1) | head -n1)
-        echo D$(echo -e '\uf073') $(date +'%d %b, %a')
-        echo C$(echo -e '\uf017') $(date "+%H:%M")
         
-        sleep $SLEEP
+        sleep 0.2
+done > "$PANEL_FIFO" &
+
+while true
+do
+		echo D$(echo -e '\uf073') $(date +'%d %b, %a')
+		sleep 180
+done > "$PANEL_FIFO" &
+
+while true
+do
+		echo C$(echo -e '\uf017') $(date "+%H:%M")
+		sleep 30
 done > "$PANEL_FIFO" &
 
 cat "$PANEL_FIFO" | ./panel_bar.sh | ./lemonbar -p -g x$PANEL_HEIGHT -F $FONT_COLOR -B $PANEL_BACKGROUND -f $PANEL_FONT_FAMILY -f $ICON_FONT

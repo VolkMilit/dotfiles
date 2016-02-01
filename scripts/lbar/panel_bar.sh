@@ -30,5 +30,5 @@ while read -r line ; do
 			wn="$PADDING2${line#?}%{F-}%{B-}"
 			;;
     esac
-    printf "%s\n" "%{l}${ws}${wn}%{r}${volume}${date}${clock}"
+    printf "%s\n" "${ws}${wn}%{r}${volume}${date}${clock}"
 done
