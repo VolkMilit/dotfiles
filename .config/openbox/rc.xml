@@ -130,12 +130,12 @@
     <!-- shortcuts -->
     <keybind key="Print">
       <action name="Execute">
-        <command>scrotctl</command>
+        <command>~/scripts/scrotctl</command>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <command>scrotctl -u</command>
+        <command>~/scripts/scrotctl -u</command>
       </action>
     </keybind>
     <keybind key="C-A-T">
@@ -155,17 +155,17 @@
     </keybind>
     <keybind key="W-G">
       <action name="Execute">
-        <command>googleforme</command>
+        <command>~/scripts/googleforme</command>
       </action>
     </keybind>
     <keybind key="W-F">
       <action name="Execute">
-        <command>openinwww</command>
+        <command>~/scripts/openinwww</command>
       </action>
     </keybind>
     <keybind key="W-T">
       <action name="Execute">
-        <command>translateforme</command>
+        <command>~/scripts/translateforme</command>
       </action>
     </keybind>
     <keybind key="C-A-C">
@@ -175,7 +175,7 @@
     </keybind>
     <keybind key="A-F2">
       <action name="Execute">
-        <command>run</command>
+        <command>~/scripts/run</command>
       </action>
     </keybind>
     <keybind key="A-X">
@@ -185,7 +185,7 @@
     </keybind>
     <keybind key="A-F9">
       <action name="Execute">
-        <command>xcompmgr</command>
+        <command>~/scripts/xcompmgr</command>
       </action>
     </keybind>
     <keybind key="C-S-Escape">
@@ -201,7 +201,7 @@
     <!-- system sortcuts -->
     <keybind key="W-l">
       <action name="Execute">
-        <command>lock</command>
+        <command>~/scripts/lock</command>
       </action>
     </keybind>
     <keybind key="W-Escape">
@@ -212,17 +212,17 @@
     <!-- Multimedia keyboard -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>volume 5%+</command>
+        <command>~/scripts/volume 5%+</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>volume 5%-</command>
+        <command>~/scripts/volume 5%-</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>volume toggle</command>
+        <command>~/scripts/volume toggle</command>
       </action>
     </keybind>
     <keybind key="XF86AudioNext">
@@ -237,7 +237,7 @@
     </keybind>
     <keybind key="XF86AudioPlay">
       <action name="Execute">
-        <command>stopyt</command>
+        <command>~/scripts/stopyt</command>
       </action>
     </keybind>
     <keybind key="XF86HomePage">
@@ -306,17 +306,6 @@
     </keybind>
     <keybind key="W-Left">
       <action name="DesktopLeft"/>
-    </keybind>
-    <!-- macros -->
-    <keybind key="A-1">
-      <action name="Execute">
-        <command>~/macros.sh fire</command>
-      </action>
-    </keybind>
-    <keybind key="A-2">
-      <action name="Execute">
-        <command>~/macros.sh jnf</command>
-      </action>
     </keybind>
     <!--Twily's keybind's-->
     <keybind key="W-A-KP_7">
