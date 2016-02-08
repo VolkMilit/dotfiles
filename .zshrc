@@ -14,7 +14,7 @@ rc="$(tput sgr0)"	# reset
 source "$HOME/.config/zsh/git/gitprompt.zsh"
 PS1="$(git_super_status) %F{green}[%~]%F{reset_colors}$ " #%F{blue}[%n@%M] 
 #PS1="%\C:\%~ > "
-echo "${bc}Tip of the day:${rc}${c2}" `$HOME/.local/goodies/dbug`
+echo "${bc}Tip of the day:${rc}${c2}" `$HOME/scripts/goodies/dbug`
 
 #mkdir -m 0700 /dev/cgroup/cpu/user/$$
 #echo $$ > /dev/cgroup/cpu/user/$$/tasks
