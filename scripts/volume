@@ -1,11 +1,39 @@
 #!/bin/sh
 
-h="hw:1"
+# z3bra - (c) wtfpl 2014
 
-killall dunst
-amixer -D $h set PCM $1
+CHANNEL=$(amixer -c 1 | sed "1s/^.*'\(.*\)'.*$/\1/p;d")
 
-x=`amixer -D $h | sed -rn '/[^[]+\[/{s///;s/%.+//p;q}'`
-#notify-send -i audio-volume-high-symbolic  -h int:value:$x  "" -t 5
+usage () {
+    cat <<EOF
+usage: $(basename $0) [-hsla] [-+!]
+    -h : print help
+    -s : print on/off
+    -l : print the current volume percentage (default)
+    -a : print both level and state
+     + : volume +5%
+     - : volume -5%
+     ! : toggle mute
+EOF
+}
 
-exit 0
+level() {
+    amixer -c 1 get $CHANNEL | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq
+}
+
+state() {
+    amixer -c 1 get $CHANNEL | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq
+}
+
+# print out level and state if no argument is given
+test $# -eq 0 && echo "`level`" && exit 0
+
+case $1 in
+    -h)        usage ;;
+    -s)        state ;;
+    -l)        level ;;
+     up|+)     amixer -c 1 set $CHANNEL 5%+ >/dev/null;;
+     down|-)   amixer -c 1 set $CHANNEL 5%- >/dev/null;;
+     toggle|!) amixer -c 1 set $CHANNEL toggle >/dev/null;;
+     *)        amixer -c 1 set $CHANNEL $1 >/dev/null;;
+esac
