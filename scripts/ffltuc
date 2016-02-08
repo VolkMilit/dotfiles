@@ -1,0 +1,5 @@
+#!/bin/sh
+for i in $1; 
+    do new=`echo "$i" | sed -e 's/^./\U&/'`;
+    mv "$i" "$new";
+done;

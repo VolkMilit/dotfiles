@@ -1,8 +1,20 @@
 # Set up the prompt
-#sss
+
+bc="$(tput bold)"	# bold
+c0="$(tput setaf 0)"	# black
+c1="$(tput setaf 1)"	# red
+c2="$(tput setaf 2)"	# green
+c3="$(tput setaf 3)"	# yellow
+c4="$(tput setaf 4)"	# blue
+c5="$(tput setaf 5)"	# magenta
+c6="$(tput setaf 6)"	# cyan
+c7="$(tput setaf 7)"	# white
+rc="$(tput sgr0)"	# reset
+
 source "$HOME/.config/zsh/git/gitprompt.zsh"
 PS1="$(git_super_status) %F{green}[%~]%F{reset_colors}$ " #%F{blue}[%n@%M] 
 #PS1="%\C:\%~ > "
+echo "${bc}Tip of the day:${rc}${c2}" `$HOME/.local/goodies/dbug`
 
 #mkdir -m 0700 /dev/cgroup/cpu/user/$$
 #echo $$ > /dev/cgroup/cpu/user/$$/tasks
@@ -19,8 +31,8 @@ setopt  HIST_IGNORE_ALL_DUPS
 setopt  HIST_REDUCE_BLANKS
 
 # Keep 1000 lines of history within the shell and save it to ~/.cache/zsh_history:
-HISTSIZE=10000
-SAVEHIST=1000
+HISTSIZE=100
+SAVEHIST=100
 HISTFILE=~/.cache/zsh_history
 
 #plugins
