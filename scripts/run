@@ -3,12 +3,18 @@
 
 cd $HOME/scripts/dmenu/
 
+# l10n support
+case $LANG in
+    ru_* ) TEXT="запустить:" ;; # Russian
+    en_* ) TEXT="run:" ;; # English
+esac
+
 SB="#d64937"
 SF="#ffffff"
 NB="#2d2d2d"
 NF="#ffffff"
 FN="-*-fixed-medium-r-dejavu-*-16-*-*-*-*-*-iso10646-*"
-OPTIONS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -x 250 -y 512 -w 800 -p запустить: -i"
+OPTIONS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -x 250 -y 512 -w 800 -p $TEXT -i"
 
 DMENU="./dmenu -i $OPTIONS"
 TERMI="st -e"
