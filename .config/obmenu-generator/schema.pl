@@ -29,8 +29,8 @@ my $editor = $CONFIG->{editor};
 our $SCHEMA = [
 
     #          COMMAND                 LABEL                ICON
-    {item => ['xdg-open http://',  'Веб-браузер',       'web-browser']},
-    {item => ['icedove',  'Почта',       'icedove']},
+    {item => ['xdg-open http://',  'Web-browser',       'web-browser']},
+    {item => ['icedove',  'Mail',       'icedove']},
     {item => ['steam',  'Steam',       'steam']},
     {item => ['keepass',  'KeePassX',       'keepassx']},
     {item => ['/opt/deadbeef/deadbeef', 'DeadBeef', 'gnome-music']},
@@ -38,17 +38,17 @@ our $SCHEMA = [
     {sep => 'Категории'},
 
     #          NAME            LABEL                ICON
-    {cat => ['utility',     'Инструменты', 'applications-utilities']},
-    {cat => ['development', 'Разработка', 'applications-development']},
-    {cat => ['education',   'Образование',   'applications-science']},
-    {cat => ['game',        'Игры',       'applications-games']},
-    {cat => ['graphics',    'Графика',    'applications-graphics']},
-    {cat => ['audiovideo',  'Мультимедия',  'applications-multimedia']},
-    {cat => ['network',     'Сеть',     'applications-internet']},
-    {cat => ['office',      'Офис',      'applications-office']},
-    #{cat => ['other',       'Other',       'applications-other']}
-    {cat => ['settings',    'Настройки',    'applications-accessories']},
-    {cat => ['system',      'Система',      'applications-system']},
+    {cat => ['utility',     'Utilities',   'applications-utilities']},
+    {cat => ['development', 'Development', 'applications-development']},
+    {cat => ['education',   'Science',     'applications-science']},
+    {cat => ['game',        'Games',       'applications-games']},
+    {cat => ['graphics',    'Graphics',    'applications-graphics']},
+    {cat => ['audiovideo',  'Multimedia',  'applications-multimedia']},
+    {cat => ['network',     'Internet',    'applications-internet']},
+    {cat => ['office',      'Office',      'applications-office']},
+    #{cat => ['other',       'Other',      'applications-other']}
+    {cat => ['settings',    'Accessories', 'applications-accessories']},
+    {cat => ['system',      'System',      'applications-system']},
 
     #{cat => ['qt',          'QT Applications',    'qt4logo']},
     #{cat => ['gtk',         'GTK Applications',   'gnome-applications']},
@@ -71,7 +71,7 @@ our $SCHEMA = [
 
     ## Custom advanced settings
     {sep => undef},
-    {begin_cat => ['Расширенные настройки', 'gnome-settings']},
+    {begin_cat => ['Advanced settings', 'gnome-settings']},
     
 		{item => ["$editor ~/.config/dunst/dunstrc", "Dunstrc", "text-x-source"]},
 
@@ -102,7 +102,7 @@ our $SCHEMA = [
     {sep => undef},
 
     # This option uses the default Openbox's action "Exit"
-    {item => ['qtlogout', 'Выход', 'exit']},
+    {item => ['qtlogout', 'Exit', 'exit']},
 
     # This uses the 'oblogout' menu
     # {item => ['oblogout', 'Exit', 'exit']},
