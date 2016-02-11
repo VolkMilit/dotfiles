@@ -4,9 +4,12 @@ FOLDER="$HOME/Изображения/screenshots/"
 exe="scrot"
 
 if [ "$1" = "-s" ]; then
+	eval $(slop)
+	import -window root -crop $G $FOLDER$(date +%F-%T).png
+elif [ "$1" = "-s-old" ]; then
 	$exe $FOLDER$(date +%F-%T).png -s
 else
-	$exe $FOLDER$(date +%F-%T).png
+	$exe $1 $FOLDER$(date +%F-%T).png
 fi
 
 notify-send Scrot "Screenshot saved"

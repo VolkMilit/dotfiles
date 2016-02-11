@@ -1,10 +1,12 @@
-Dotfiles 
+##Dotfiles
 my current desktop configuration
-============
 
 website: [DeviantArt](http://return-1.deviantart.com/)
 
 ![screen shot of lockscreen](/screenshots/all_in_one.png)
+
+####Update
+- Scrotctl now depends of imageamgic and slop, but still have -s-old option
 
 ============
 Lock: [i3lock-fancy](https://github.com/meskarune/i3lock-fancy);																																										
