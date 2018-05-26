@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-#
-#https://habrahabr.ru/post/48954/
-#
-
-xclip -o | sed -n 1p | xargs chromium
