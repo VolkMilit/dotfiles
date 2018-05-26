@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+function help()
+{
+		echo "-l - see current level of britness
+		up|+ - up britness to 10
+		down|- - down britness to 10
+		default|! - set default britness at 100%
+		setup|s - set britness"
+		
+}
+
+function send_notify()
+{
+	local volume_step=5
+	
+    while [[ $(pgrep lemonbar) != "" ]]; do
+        kill -s SIGTERM $(pgrep lemonbar)
+    done
+
+    cur_vol=$(cat /tmp/iris)
+	
+	vol_text="%{c}%{T2}\uf0a3%{T1}  " # Add volume icon
+    
+    for block in $(seq 0 19); do
+		let math_blk=$block*${volume_step}
+        
+        if [[ $math_blk -lt $cur_vol ]]; then
+			vol_text="${vol_text}\u25AA"    # Filled small square
+		else
+			vol_text="${vol_text}\u25AB"    # Empty small square
+		fi
+	done
+	
+    popup "${vol_text} ${cur_vol}"
+}
+
+if [ ! -f /tmp/iris ]; then
+	echo 100 > /tmp/iris
+fi
+
+curr=`cat /tmp/iris`
+
+case $1 in
+    -l)        
+		echo $curr 
+	;;
+	
+    up|+)
+		if [ $curr -lt 100 ]; then 
+			iris-floss 4400 $(($curr+10))
+			echo $(($curr+10)) > /tmp/iris
+			send_notify
+		fi
+	;;
+    
+    down|-)
+		if [ $curr != 20 ]; then
+			iris-floss 4400 $(($curr-10)) &&
+			echo $(($curr-10)) > /tmp/iris &
+			send_notify
+		fi
+	;;
+    
+    default|!) 
+		iris-floss 6500 100
+		echo 100 > /tmp/iris
+		send_notify
+	;;
+	
+	setup|s)
+		iris-floss 4400 $2 &&
+		echo $2 > /tmp/iris		
+	;;
+	
+	*) help ;;
+esac

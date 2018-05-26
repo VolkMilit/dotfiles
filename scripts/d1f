@@ -1,0 +1,52 @@
+#!/bin/sh
+# 
+# D1F (dev one a.k.a. Devuan Fetch) - tiny system info for Debian and Debian-like OS
+# Fork of ufetch that's I found there: https://github.com/ix/bin/blob/master/ufetch
+# Name of distro generated with figlet
+#
+
+. /etc/os-release
+
+## INFO
+
+OS="$NAME"
+KERNEL="$(uname -sr | cut -d'-' -f1)"
+UPTIME="$(uptime -p | awk '{gsub("up ", ""); print}')"
+PACKAGES="$(dpkg --get-selections | wc -l)"
+WM="$(wmctrl -m | awk 'NR==1 {print $2}')"
+GTK2="$(awk -F'=' '/gtk-theme-name/ {gsub("\"",""); print $2}' ~/.gtkrc-2.0)"
+
+## DEFINE COLORS
+
+# probably don't change these
+bc="$(tput bold)"	# bold
+c0="$(tput setaf 0)"	# black
+c1="$(tput setaf 1)"	# red
+c2="$(tput setaf 2)"	# green
+c3="$(tput setaf 3)"	# yellow
+c4="$(tput setaf 4)"	# blue
+c5="$(tput setaf 5)"	# magenta
+c6="$(tput setaf 6)"	# cyan
+c7="$(tput setaf 7)"	# white
+rc="$(tput sgr0)"	# reset
+
+# you can change these
+lc="${bc}${c1}"		# labels
+nc="${bc}${c1}"		# user and hostname
+tc="${bc}${c7}"		# text
+pc="${c6}"		# penguin
+
+## OUTPUT
+
+#figlet -f small -w 54 DEBIAN GNU/LINUX 
+cat <<EOF
+  ${bc}${c1}___  ___ ___ ___   _   _  _ 			 
+ ${bc}${c1}|   \| __| _ )_ _| /_\ | \| | 			  ${lc}OS:${rc}	    ${tc}${OS}${rc}
+ ${bc}${c1}| |) | _|| _ \| | / _ \| .\` | 			  ${lc}KERNEL:${rc}   ${tc}${KERNEL}${rc}
+ ${bc}${c1}|___/|___|___/___/_/ \_\_|\_| 	  		  ${lc}UPTIME:${rc}   ${tc}${UPTIME}${rc}
+  ${bc}${c1} ___ _  _ _   _  ___    ___ _  _ _   ___  __ 	  ${lc}PACKAGES:${rc} ${tc}${PACKAGES}${rc}
+  ${bc}${c1}/ __| \| | | | |/ / |  |_ _| \| | | | \ \/ / 	  ${lc}SHELL:${rc}    ${tc}${SHELL}${rc}
+ ${bc}${c1}| (_ | .\` | |_| / /| |__ | || .\` | |_| |>  < 	  ${lc}WM:${rc}      ${tc}${WM}${rc}
+  ${bc}${c1}\___|_|\_|\___/_/ |____|___|_|\_|\___//_/\_\\	  ${lc}GTK2\3:${rc}   ${tc}${GTK2}${rc}
+  
+EOF

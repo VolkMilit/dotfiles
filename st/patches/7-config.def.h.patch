@@ -1,0 +1,36 @@
+*** /tmp/mapt/st-0.7/config.def.h	2018-03-16 17:55:33.852287721 +0800
+--- /tmp/mapt/st-0.7/config.def.h.orig	2018-03-16 17:55:05.848287341 +0800
+***************
+*** 5,11 ****
+   *
+   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+   */
+! char font[] = "Ubuntu Mono:pixelsize=15:antialias=true:autohint=false";
+  int borderpx = 2;
+  
+  /*
+--- 5,11 ----
+   *
+   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+   */
+! char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+  int borderpx = 2;
+  
+  /*
+***************
+*** 63,69 ****
+  static int bellvolume = 0;
+  
+  /* default TERM value */
+! char termname[] = "xterm-256color";
+  
+  /*
+   * spaces per tab
+--- 63,69 ----
+  static int bellvolume = 0;
+  
+  /* default TERM value */
+! char termname[] = "st-256color";
+  
+  /*
+   * spaces per tab

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+S=1
+
+anim()
+{
+	a=$2
+	while $1 -gt $a; do
+		a=$(($a-1))
+		irisctl s $a
+		sleep 0.1
+	done
+}
+
+while true; do
+	if [ $(date +"%H") -gt 22 ] || [ $(date +"%H") -lt 09 ]; then
+		irisctl s 60
+	elif [ $(date +"%H") -gt 19 ]; then
+		irisctl s 70
+	fi
+	
+	sleep $(($S*60))
+done

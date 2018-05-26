@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+#   Script used to change volume level.
+#   Script is bound to function volume keys by i3 in its configuration file.
+#   
+#   REQUIRES: pactl, lemonbar (popup alias)
+#################################################################################
+
+if [ "$(free -m | awk 'NR==2 {print $7}')" -lt "600" ]; then
+	echo "Not enough memory."
+	exit 0
+fi
+
+function send_notify()
+{
+	local volume_step=5
+	
+    while [[ $(pgrep lemonbar) != "" ]]; do
+        kill -s SIGTERM $(pgrep lemonbar)
+    done
+
+    cur_vol=$(get_current_volume)
+    if [[ $(speaker_status) == "off" ]]; then
+        vol_text="%{c}%{T2}\uf026%{T1}  "
+        for block in $(seq 0 19); do
+            let math_blk=$block*${volume_step}
+            vol_text="${vol_text}\u25AB"
+        done
+    else
+        vol_text="%{c}%{T2}\uf028%{T1}  " # Add volume icon
+        for block in $(seq 0 19); do
+            let math_blk=$block*${volume_step}
+            if [[ $math_blk -lt $cur_vol ]]; then
+                vol_text="${vol_text}\u25AA"    # Filled small square
+            else
+                vol_text="${vol_text}\u25AB"    # Empty small square
+            fi
+        done        
+    fi
+    popup "${vol_text} ${cur_vol}"
+}
+
+function get_current_volume(){
+    volume -l | tr -d "%"
+}
+
+function speaker_status(){
+    volume -s | tr -d "[]"
+}
+
+send_notify

@@ -2,15 +2,12 @@
 
 # z3bra - (c) wtfpl 2014
 
-CHANNEL=$(amixer -c 1 | sed "1s/^.*'\(.*\)'.*$/\1/p;d")
-
 usage () {
     cat <<EOF
-usage: $(basename $0) [-hsla] [-+!]
+usage: $(basename $0) [-hsl] [-+!]
     -h : print help
     -s : print on/off
     -l : print the current volume percentage (default)
-    -a : print both level and state
      + : volume +5%
      - : volume -5%
      ! : toggle mute
@@ -18,11 +15,20 @@ EOF
 }
 
 level() {
-    amixer -c 1 get $CHANNEL | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq
+    echo `pactl list sinks | awk '/Громкость:/{print $5}' | head -1`
 }
 
 state() {
-    amixer -c 1 get $CHANNEL | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq
+    amixer sget Master | awk 'NR==7 {print $6}'
+}
+
+lset() {
+	pactl set-sink-volume @DEFAULT_SINK@ $1% &
+	vol #& aplay /home/volk/.local/share/sounds/vol.wav
+}
+
+sset() {
+	amixer set Master toggle & vol
 }
 
 # print out level and state if no argument is given
@@ -32,8 +38,8 @@ case $1 in
     -h)        usage ;;
     -s)        state ;;
     -l)        level ;;
-     up|+)     amixer -c 1 set $CHANNEL 5%+ >/dev/null;;
-     down|-)   amixer -c 1 set $CHANNEL 5%- >/dev/null;;
-     toggle|!) amixer -c 1 set $CHANNEL toggle >/dev/null;;
-     *)        amixer -c 1 set $CHANNEL $1 >/dev/null;;
+     up|+)	lset +5;;
+     down|-)   lset -5;;
+     toggle|!) sset	;;
+     *)        usage
 esac

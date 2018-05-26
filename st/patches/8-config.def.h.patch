@@ -1,0 +1,21 @@
+*** /tmp/mapt/st-0.7/config.def.h	2018-03-16 19:02:55.560342616 +0800
+--- /tmp/mapt/st-0.7/config.def.h.orig	2018-03-16 19:02:45.308342477 +0800
+***************
+*** 138,145 ****
+   * Default columns and rows numbers
+   */
+  
+! unsigned int cols = 111;
+! unsigned int rows = 34;
+  
+  /*
+   * Default colour and shape of the mouse cursor
+--- 138,145 ----
+   * Default columns and rows numbers
+   */
+  
+! unsigned int cols = 80;
+! unsigned int rows = 24;
+  
+  /*
+   * Default colour and shape of the mouse cursor

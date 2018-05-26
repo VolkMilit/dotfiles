@@ -1,26 +1,20 @@
 ## Dotfiles
 my current desktop configuration
 
-website: [DeviantArt](http://return-1.deviantart.com/)
+![screenshot](/screenshots/all_in_one.png)
 
-![screen shot of lockscreen](/screenshots/all_in_one.png)
+Obmenu-pp: [menu generator](https://github.com/VolkMilit/obmenu-pp)
 
-#### Update
-- Scrotctl now depends of imageamgic and slop, but still have -s-old option
+Tiling controll: [Twily's tiling scripts](http://twily.info/scripts/tiling/)																																
 
-============
-Lock: [i3lock-fancy](https://github.com/meskarune/i3lock-fancy);	
-																																									
-Logout: My fork of [qtLogout](https://github.com/VolkMilit/qtLogout);																																								
+Firefox: PaleMoon with [WhiteMoon](https://addons.palemoon.org/addon/white-moon/)
 
-Tiling controll: [Twily's tiling scripts](http://twily.info/scripts/tiling/);																																									
+Icons: [Pop!](https://github.com/pop-os/icon-theme)
 
-Firefox: [firefox flat minimal](https://userstyles.org/styles/86995/firefox-flatstudio-tabs-like-tabs-2-css) (also use it in Icedove\Thunderbird) + classic theme restorer + [my fork of Twily's homepage](https://github.com/VolkMilit/firefox-new-startpage) of couse with numix color =);																	
+GTK Theme: [Slightly modifyed Arc](https://github.com/NicoHood/arc-theme)
 
-Wallpaper: from [here](https://i.ytimg.com/vi/tv8eUaPZOqQ/maxresdefault.jpg);																																				
+WM Theme: [Modifyed Arc for OpenBox (trying to make System76 colors)](https://github.com/NicoHood/arc-theme)
 
-Icons: [here](http://gnome-look.org/content/show.php/Vimix-Icon-Theme?content=169873) but in menu categories I used [Emerald](http://gnome-look.org/content/show.php/Emerald?content=167606);																																			
+Terminal: [st 0.7 with patches](https://st.suckless.org/)
 
-GTK Theme: [here](http://gnome-look.org/content/show.php/Numix?content=160205);																																	
-
-WM Theme: [here](https://github.com/shimmerproject/Numix/tree/master/openbox-3);																																	
+Run: [dmenux](https://github.com/lvitals/dmenux)

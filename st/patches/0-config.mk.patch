@@ -1,0 +1,19 @@
+*** /tmp/mapt/st-0.7/config.mk	2018-03-16 17:35:27.432271335 +0800
+--- /tmp/mapt/st-0.7/config.mk.orig	2018-03-16 17:35:22.160271264 +0800
+***************
+*** 4,10 ****
+  # Customize below to fit your system
+  
+  # paths
+! PREFIX = /usr
+  MANPREFIX = $(PREFIX)/share/man
+  
+  X11INC = /usr/X11R6/include
+--- 4,10 ----
+  # Customize below to fit your system
+  
+  # paths
+! PREFIX = /usr/local
+  MANPREFIX = $(PREFIX)/share/man
+  
+  X11INC = /usr/X11R6/include

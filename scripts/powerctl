@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" = "-suspend" ]; then
+	sudo pm-suspend
+elif [ "$1" = "-poweroff" ]; then
+	sudo shutdown -h now
+elif [ "$1" = "-reboot" ]; then
+	sudo reboot
+else
+	exit 0
+fi

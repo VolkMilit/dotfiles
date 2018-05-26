@@ -1,30 +1,24 @@
 #!/bin/sh
 # end a command with ; to run in a terminal
 
-cd $HOME/scripts/dmenu/
+. lib/colors
 
-# l10n support
-case $LANG in
-    ru_* ) TEXT="запустить:" ;; # Russian
-    en_* ) TEXT="run:" ;; # English
-esac
-
-SB="#d64937"
-SF="#ffffff"
-NB="#2d2d2d"
-NF="#ffffff"
+TEXT="run:"
 FN="-*-fixed-medium-r-dejavu-*-16-*-*-*-*-*-iso10646-*"
-OPTIONS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -x 250 -y 512 -w 800 -p $TEXT -i"
+OPTIONS="-o .90 -nf $FN -nb $NB -nf $NF -sb $SB -sf $SF -x $((1280/2-800/2)) -y 40 -w 800 -l 15 -p $TEXT -i -h 30"
 
-DMENU="./dmenu -i $OPTIONS"
+DMENU="dmenu_run -i $OPTIONS"
 TERMI="st -e"
-CACHE="$HOME/.cache/dmenu_cache_recent"
+#CACHE="$HOME/.cache/dmenu_cache_recent"
 
-touch $CACHE
-MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
-RUN=`(echo "$MOST_USED"; ./dmenu_path | grep -vxF "$MOST_USED") | $DMENU $@` &&
-(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
-mv $CACHE.$$ $CACHE
+#[ -f $CACHE ] && touch $CACHE
+
+#MOST_USED=`sort $CACHE | uniq -d | sort -r`
+#RUN=`(echo "$MOST_USED"; dmenu_path | grep -vxF "$MOST_USED") | $DMENU $@` &&
+#(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
+#mv $CACHE.$$ $CACHE
+
+RUN=$($DMENU $@)
 
 case $RUN in
     *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;

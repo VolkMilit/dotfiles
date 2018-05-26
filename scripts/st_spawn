@@ -1,0 +1,6 @@
+#!/bin/sh
+
+st -n stspawn &
+sleep 0.5
+WINPID=$(xwininfo -id $(xdotool getactivewindow) | head -n2 | cut -d':' -f3 | cut -d'"' -f1)
+xseticon -id $WINPID /home/volk/.icons/term.png
