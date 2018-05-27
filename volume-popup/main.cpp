@@ -32,6 +32,7 @@
 #include <QDesktopWidget>
 #include <QImage>
 #include <QColor>
+#include <QPainter>
 
 class MyWindowWidget : public QWidget
 {
@@ -138,13 +139,27 @@ public:
         label->setPixmap(pix);
         label->setAlignment(Qt::AlignCenter);
 
+        QLabel *percents = new QLabel;
+        percents->setAlignment(Qt::AlignCenter);
+        percents->setText(p.toString() + "%");
+        percents->setStyleSheet("QLabel{color: " + tooltipFgColor + ";}");
+
+        QLabel *customprogressbar = new QLabel;
+        QPixmap progress(150, 10);
+        progress.fill(QColor("transperent"));
+        QPainter painter(&progress);
+        painter.setBrush(QBrush(QColor(r, g, b)));
+        painter.drawRect(0, 0, p.toInt() * 1.5, 10);
+        customprogressbar->setPixmap(progress);
+
         layout->addWidget(label);
-        layout->addWidget(progressbar);
+        layout->addWidget(percents);
+        layout->addWidget(customprogressbar);
 
         this->setLayout(layout);
 
-        this->setStyleSheet(".QWidget{background-color: " + tooltipBgColor + ";\
-                                    border: 0px solid black; border-radius: 3px;}");
+        this->setStyleSheet(".QWidget{background-color: " + tooltipBgColor + ";"
+                            "border: 0px solid black; border-radius: 3px;}");
 
         this->setWindowOpacity(0.8);
 
