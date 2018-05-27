@@ -1,7 +1,8 @@
 # Volume-popup
 Attempt to make volume popup\cloud the one in Mint for any Box-like window managers.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot-main.png)
+![screenshot with custom progressbar](screenshot-customprogress.png)
 
 ### Dependencies
 - Qt5

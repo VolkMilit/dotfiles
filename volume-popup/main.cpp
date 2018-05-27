@@ -33,21 +33,40 @@
 #include <QImage>
 #include <QColor>
 #include <QPainter>
+#include <QCommandLineParser>
 
-class MyWindowWidget : public QWidget
+class CustomProgressbar : public QLabel
 {
 public:
-    MyWindowWidget(QWidget *parent)
-        : QWidget(parent, Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup)
+    CustomProgressbar(QWidget *parent, QColor color, int percent)
+        : QLabel(parent)
     {
-        this->setWindowTitle("volume-popup");
+        QPixmap progress(150, 10);
+        progress.fill(QColor("transperent"));
+        QPainter painter(&progress);
+        painter.setBrush(QBrush(color));
+        painter.drawRect(0, 0, percent * 1.5, 10);
+        this->setPixmap(progress);
+    }
+};
 
-        int x = QApplication::desktop()->availableGeometry().width() / 2 - this->width();
-        int y = QApplication::desktop()->availableGeometry().height() - this->height() * 10;
-        this->move(x, y);
+class Percensts : public QLabel
+{
+public:
+    Percensts(QWidget *parent, int pp, const QString &bg)
+        : QLabel(parent)
+    {
+        this->setAlignment(Qt::AlignCenter);
+        this->setText(QString::number(pp) + "%");
+        this->setStyleSheet("QLabel{color: #" + bg + ";}");
+    }
+};
 
-        QString icons;
-        QString theme;
+class FindThemes
+{
+public:
+    FindThemes()
+    {
         QFile file(QDir::homePath() + "/.gtkrc-2.0");
         if (file.open(QIODevice::ReadOnly))
         {
@@ -62,11 +81,9 @@ public:
             }
         }
         file.close();
-
         icons.remove("\"");
         theme.remove("\"");
 
-        QString volumeicon;
         QDirIterator it(QDir::homePath() + "/.icons/" + icons,\
                         QDir::AllEntries | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
         while (it.hasNext())
@@ -78,8 +95,6 @@ public:
             }
         }
 
-        QString tooltipBgColor;
-        QString tooltipFgColor;
         theme = QDir::homePath() + "/.themes/" + theme + "/gtk-2.0/gtkrc";
         QFile gtkrc(theme);
         if (gtkrc.open(QIODevice::ReadOnly))
@@ -106,6 +121,55 @@ public:
         const unsigned int g = sg.toUInt(nullptr, 16);
         const unsigned int b = sb.toUInt(nullptr, 16);
 
+        color.setRgb(r, g, b);
+    }
+
+    QString getVolumeIcon()
+    {
+        return volumeicon;
+    }
+
+    QString getBgColor()
+    {
+        return tooltipBgColor;
+    }
+
+    QString getFgColor()
+    {
+        return tooltipFgColor;
+    }
+
+    QColor getRGBColor()
+    {
+        return color;
+    }
+
+private:
+    QColor color;
+    QString icons;
+    QString theme;
+    QString tooltipBgColor;
+    QString tooltipFgColor;
+    QString volumeicon;
+};
+
+class MyWindowWidget : public QWidget
+{
+public:
+    MyWindowWidget(QWidget *parent, bool customprogress = false)
+        : QWidget(parent, Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup)
+    {
+        this->setWindowTitle("volume-popup");
+
+        int x = QApplication::desktop()->availableGeometry().width() / 2 - this->width();
+        int y = QApplication::desktop()->availableGeometry().height() - this->height() * 10;
+        this->move(x, y);
+
+        FindThemes themes;
+        QString tooltipBgColor = themes.getBgColor();
+        QString tooltipFgColor = themes.getFgColor();
+        QString volumeicon = themes.getVolumeIcon();
+
         QVariant p;
         if (QApplication::arguments().size() > 1)
             p = QApplication::arguments().at(1);
@@ -116,9 +180,9 @@ public:
 
         QProgressBar *progressbar = new QProgressBar;
         progressbar->setValue(p.toInt());
+        progressbar->setStyleSheet("QProgressBar{height: 10px;}");
 
-        QColor color;
-        color.setRgb(r, g, b);
+        QColor color = themes.getRGBColor();
 
         QPixmap pix;
         pix.load(volumeicon);
@@ -139,22 +203,16 @@ public:
         label->setPixmap(pix);
         label->setAlignment(Qt::AlignCenter);
 
-        QLabel *percents = new QLabel;
-        percents->setAlignment(Qt::AlignCenter);
-        percents->setText(p.toString() + "%");
-        percents->setStyleSheet("QLabel{color: " + tooltipFgColor + ";}");
-
-        QLabel *customprogressbar = new QLabel;
-        QPixmap progress(150, 10);
-        progress.fill(QColor("transperent"));
-        QPainter painter(&progress);
-        painter.setBrush(QBrush(QColor(r, g, b)));
-        painter.drawRect(0, 0, p.toInt() * 1.5, 10);
-        customprogressbar->setPixmap(progress);
-
         layout->addWidget(label);
-        layout->addWidget(percents);
-        layout->addWidget(customprogressbar);
+        if (!customprogress)
+        {
+            layout->addWidget(progressbar);
+        }
+        else
+        {
+            layout->addWidget(new Percensts(this, p.toInt(), tooltipFgColor));
+            layout->addWidget(new CustomProgressbar(this, themes.getRGBColor(), p.toInt()));
+        }
 
         this->setLayout(layout);
 
@@ -171,9 +229,18 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addOption(QCommandLineOption({"p", "progressbar"}, "Use custom progressbar."));
+    parser.process(app);
+
+    bool cpb = false;
+    if (parser.isSet("p"))
+        cpb = true;
+
     QMainWindow window;
 
-    MyWindowWidget widget(&window);
+    MyWindowWidget widget(&window, cpb);
     widget.show();
 
     QTimer::singleShot(1000, &app, SLOT(quit()));
