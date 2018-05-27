@@ -76,7 +76,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 20
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -111,7 +111,7 @@
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 0
+    line_height = 10
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -121,7 +121,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 1
 
     # Padding between text and separator.
     padding = 8
@@ -135,7 +135,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = foreground
 
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -146,17 +146,19 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/chromium
+    browser = /usr/bin/firefox
 
     # Align icons left/right/off
     icon_position = left
 
     # Paths to default icons.
-    icon_folders = /home/volk/.icons/Vimix/status/24x24/:/home/volk/.icons/Vimix/devices/symbolic/
+    icon_folders = /home/volk/.icons/Papirus-Adapta-Nokto/22x22/actions
+    
+    max_icon_size = 128
 
 [frame]
     width = 0
-    color = "#2e2e2e"
+    color = "#4B5162"
 
 [shortcuts]
 
@@ -182,20 +184,24 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#2d2d2d"
+    background = "#4B5162"
     foreground = "#888888"
     timeout = 10
 
 [urgency_normal]
-    background = "#2d2d2d"
+    background = "#4B5162"
     foreground = "#ffffff"
     timeout = 10
 
 [urgency_critical]
-    background = "#2d2d2d"
+    background = "#4B5162"
     foreground = "#ffffff"
     timeout = 0
 
+[discord]
+	appname = Discord
+	summary = "*"
+	script = discord
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

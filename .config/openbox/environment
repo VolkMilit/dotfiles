@@ -1,6 +1,9 @@
 #steam
 export STEAM_FRAME_FORCE_CLOSE=1
-export force_s3tc_enable=true
+#export force_s3tc_enable=true
+
+# Mozilla
+export MOZILLA_DISABLE_PLUGINS=1
 
 #app's
 export GIMP2_DIRECTORY="$HOME/.local/share/gimp-2.8"
@@ -8,13 +11,25 @@ export GNUPGHOME="$HOME/.config/gnupg"
 export MPLAYER_HOME="$HOME/.config/mplayer"
 
 # NVIDIA
+export __GL_SHADER_DISK_CACHE=1
 export __GL_SHADER_DISK_CACHE_PATH="$HOME/.cache/nv"
+export __GL_IGNORE_GLSL_EXT_REQS=1
+export __GL_SORT_FBCONFIGS=0
 
 #.pki
 export HTTPIE_CONFIG_DIR="$HOME/.config/pki"
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/volk/.local/bin:/home/volk/.local/games:/home/volk/.local/runtime/"
 export LANG="ru_RU.UTF8"
-export __GL_YIELD="USLEEP"
+export XDG_TEMPLATES_DIR="$HOME/.local/share/templates"
+export __GL_YIELD="NOTHING"
 
 export FONTCONFIG_PATH="$HOME/.cache/fontconfig"
+
+export QT_STYLE_OVERRIDE=gtk2
+export QT_QPA_PLATFORMTHEME=gtk2
+
+export NO_AT_BRIDGE=1
+
+#pshhhhhhhhhhhhhhh audio
+#export PULSE_PROP="filter.want=echo-cancel"

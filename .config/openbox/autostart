@@ -1,9 +1,18 @@
-nvidia-settings --load-config-only --config $HOME/.config/nvidia-settings-rc &
-# nitrogen --restore &
-bar &
-# xfce4-panel &
-clipit &
-# plank &
+#randomwallpaper &
+nitrogen --restore &
+tint2 -c ~/.config/tint2/tint2rc &
+clipit -n &
 xcompmgr &
-xautolock -detectsleep -time 8 -locker lock &
-# randomwallpaper &
+crow &
+night_mode &
+pulseaudio --start &
+
+#fullscreen &
+#xautolock -detectsleep -time 8 -locker i3lock-next &
+
+#nvidia-settings -a InitialPixmapPlacement=2 &
+#nvidia-settings -a GlyphCache=1 &
+
+#nvidia-settings --load-config-only --config $HOME/.config/nvidia-settings-rc &
+#bar &
+#tilda && sleep 1 && tilda &

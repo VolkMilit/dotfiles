@@ -2,5 +2,5 @@
 <openbox_menu xmlns="http://openbox.org/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://openbox.org/">
-    <menu id="root-menu" label="obmenu-generator" execute="/usr/bin/perl ~/scripts/obmenu-generator -i" />
+    <menu id="root-menu" label="obmenu-generator" execute="/bin/sh -c '/home/volk/Projects/obmenu-generator-pp/obmenu-generator-pp/menu'" />
 </openbox_menu>
