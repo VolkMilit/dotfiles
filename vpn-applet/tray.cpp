@@ -87,19 +87,17 @@ bool tray::checkProcess(const QString &name)
 
 void tray::updateMenu(QSystemTrayIcon::ActivationReason reason)
 {
-    if (reason == 1)
-    {
-        if (checkProcess("/usr/bin/tor"))
-            a_tor->setChecked(true);
-        else
-            a_tor->setChecked(false);
-
-        if (checkProcess("openvpn"))
-            a_vpn->setChecked(true);
-        else
-            a_vpn->setChecked(false);
-    }
+    if (checkProcess("/usr/bin/tor"))
+        a_tor->setChecked(true);
     else
+        a_tor->setChecked(false);
+
+    if (checkProcess("openvpn"))
+        a_vpn->setChecked(true);
+    else
+        a_vpn->setChecked(false);
+
+    if (reason != 1)
     {
         tmenu->popup(QCursor::pos());
         tmenu->show();
@@ -108,6 +106,9 @@ void tray::updateMenu(QSystemTrayIcon::ActivationReason reason)
 
 void tray::vpn()
 {
+    if (checkProcess("openvpn"))
+        return;
+
     QProcess *proc = new QProcess;
     proc->start("x-terminal-emulator -e sudo openvpn " + m_ovpnfile);
 }
