@@ -67,11 +67,11 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x0-45+20"
+    geometry = "0x0-15+30"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
-    shrink = no
+    shrink = yes
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
@@ -141,6 +141,8 @@
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
     startup_notification = false
+    
+    corner_radius = 1
 
     # dmenu path.
     dmenu = /usr/bin/dmenu -p dunst:
@@ -154,7 +156,7 @@
     # Paths to default icons.
     icon_folders = /home/volk/.icons/Papirus-Adapta-Nokto/22x22/actions
     
-    max_icon_size = 128
+    max_icon_size = 64
 
 [frame]
     width = 0
