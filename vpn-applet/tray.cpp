@@ -94,7 +94,7 @@ void tray::updateMenu(QSystemTrayIcon::ActivationReason reason)
         else
             a_tor->setChecked(false);
 
-        if (checkProcess("/usr/sbin/openvpn"))
+        if (checkProcess("openvpn"))
             a_vpn->setChecked(true);
         else
             a_vpn->setChecked(false);
