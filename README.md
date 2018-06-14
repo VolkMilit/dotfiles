@@ -1,6 +1,8 @@
 ## Dotfiles
 my current desktop configuration
 
+[all updates now here](https://gitlab.com/VolkMilit/dotfiles)
+
 ![screenshot](/screenshots/all_in_one.png)
 
 Obmenu-pp: [menu generator](https://github.com/VolkMilit/obmenu-pp)
